@@ -1,0 +1,158 @@
+.gameContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.gameInfo {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.score {
+  color: #2196f3;
+}
+
+.highScore {
+  color: #e91e63;
+}
+
+.level {
+  color: #ff9800;
+}
+
+.gameCanvas {
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.startScreen,
+.gameOverScreen,
+.gameClearedScreen {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  width: 80%;
+  max-width: 400px;
+}
+
+.startScreen h2,
+.gameOverScreen h2,
+.gameClearedScreen h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.startScreen p,
+.gameOverScreen p,
+.gameClearedScreen p {
+  margin-bottom: 10px;
+}
+
+.buttonContainer {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.nextLevelButton,
+.restartButton {
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.nextLevelButton {
+  background-color: #2196f3;
+}
+
+.nextLevelButton:hover {
+  background-color: #1976d2;
+}
+
+.restartButton {
+  background-color: #4caf50;
+}
+
+.restartButton:hover {
+  background-color: #45a049;
+}
+
+.levelSelector {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.levelButtons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.levelButton {
+  background-color: #666;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.levelButton:hover {
+  background-color: #888;
+}
+
+.selectedLevel {
+  background-color: #2196f3;
+}
+
+.selectedLevel:hover {
+  background-color: #1976d2;
+}
+
+.startButton {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 20px;
+}
+
+.startButton:hover {
+  background-color: #45a049;
+}
+
+@media (max-width: 600px) {
+  .gameCanvas {
+    width: 100%;
+    height: auto;
+  }
+}

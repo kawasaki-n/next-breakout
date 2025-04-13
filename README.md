@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ブロックブレーカー
 
-## Getting Started
+Next.js で実装されたブロック崩しゲームです。レベルシステムを搭載し、レベルが上がるごとにブロックの数が増え、ボールのスピードが上がっていく challenging な仕様となっています。
 
-First, run the development server:
+## 技術スタック
+
+- Next.js (App Router)
+- TypeScript
+- Tailwind CSS
+- Canvas API
+- CSS Modules
+- Jest (テスト)
+
+## 主な機能
+
+- レベルシステム（レベル 1-5）
+  - レベルに応じてブロック数が増加
+  - レベルアップ時にボール速度が 1.3 倍に増加
+- スコアシステム
+  - ブロックを破壊するごとにスコア加算
+- 日本語 UI による直感的な操作
+- レスポンシブなゲーム画面
+
+## インストール
+
+```bash
+# リポジトリのクローン
+git clone [リポジトリURL]
+cd block-game
+
+# 依存パッケージのインストール
+npm install
+```
+
+## 開発サーバーの起動
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+ブラウザで [http://localhost:3000](http://localhost:3000) を開いてゲームを開始できます。
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 操作方法
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **左右矢印キー**: パドルの移動
+- **スペースキー**: ゲーム開始
 
-## Learn More
+## ゲームの流れ
 
-To learn more about Next.js, take a look at the following resources:
+1. レベルを選択（1-5）
+2. スタートボタンをクリック
+3. スペースキーでボールを発射
+4. 左右矢印キーでパドルを操作
+5. すべてのブロックを破壊するとレベルクリア
+6. ボールを落とすとゲームオーバー
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## ゲーム仕様
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### ブロック配置
 
-## Deploy on Vercel
+- 行数 = min(3 + floor(level / 2), 8)
+- 列数 = min(5 + level, 12)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 難易度システム
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- レベルが上がるごとに:
+  - ブロック数が増加
+  - ボールの速度が 1.3 倍に上昇
+
+## ライセンス
+
+このプロジェクトは MIT ライセンスの下で公開されています。
