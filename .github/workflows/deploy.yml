@@ -38,11 +38,40 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Build with Next.js
-        run: npm run build
+        run: |
+          # デバッグ情報を表示
+          echo "Node.js version: $(node -v)"
+          echo "NPM version: $(npm -v)"
+          echo "Next.js version: $(npm list next)"
+
+          # 詳細なログを有効にしてビルド
+          NODE_OPTIONS="--trace-warnings" npm run build
+
+          # ビルド後のディレクトリ構造を確認
+          echo "Current directory contents after build:"
+          ls -la
+          echo "Build output directories:"
+          ls -la .next || echo ".next directory not found"
+          ls -la out || echo "out directory not found"
+
+      - name: Determine build output directory
+        id: build-output
+        run: |
+          if [ -d "out" ]; then
+            echo "Using out directory"
+            echo "directory=out" >> $GITHUB_OUTPUT
+          elif [ -d ".next" ]; then
+            echo "Using .next directory"
+            echo "directory=.next" >> $GITHUB_OUTPUT
+          else
+            echo "No build output directory found"
+            exit 1
+          fi
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./out
+          path: ${{ steps.build-output.outputs.directory }}
 
   # デプロイジョブ
   deploy:
